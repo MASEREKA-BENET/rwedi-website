@@ -49,7 +49,7 @@
 .button-green:hover,.button-green:focus-visible{background:var(--green-2);color:#fff}
 .button-light:hover,.button-light:focus-visible{background:var(--green);color:#fff}
 .programme-card:hover,.programme-card:focus-visible{background:#fff5dc;border-color:var(--gold);box-shadow:var(--shadow)}
-.programme-card:hover .programme-icon,.programme-card:focus-visible .programme-icon{color:#bd7e00}
+
 .programme-card:active{transform:translateY(0) scale(.99);background:#f5e6bf;filter:brightness(.97)}
 .contact-card:hover,.contact-card:focus-within{transform:translateY(-3px);border-color:var(--gold);background:#fffaf0;box-shadow:var(--shadow)}
 .feature-project:hover,.feature-project:focus-within{border-color:var(--gold);box-shadow:var(--shadow)}
@@ -79,6 +79,16 @@
 .values-list li:hover{transform:translateX(3px);border-color:var(--gold);background:#fff5dc;box-shadow:0 4px 12px rgba(18,53,34,.08)}
 .values-list li:hover:before{color:#bd7e00}
 
+.programme-card{min-height:0;padding:0;align-items:stretch;justify-content:flex-start;overflow:hidden}
+.programme-image{width:100%;height:clamp(150px,21.5vw,220px);object-fit:cover;transition:transform .24s ease}
+.programme-image-agriculture{object-position:center 40%}
+.programme-image-youth{object-position:right center}
+.programme-image-education{object-position:center 43%}
+.programme-image-environment{object-position:center center}
+.programme-photo-credit{align-self:flex-end;padding:4px 12px 0;color:var(--muted);font-size:11px;line-height:1.2}
+.programme-card h3{max-width:none;padding:14px 12px 18px;font-size:clamp(16px,1.4vw,20px)}
+.programme-card:hover .programme-image,.programme-card:focus-visible .programme-image{transform:scale(1.035)}
+.programme-card:hover h3,.programme-card:focus-visible h3{color:var(--green-2)}
 .footer-contact a{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .footer-contact .contact-icon{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .footer-hours{flex:0 1 260px}
