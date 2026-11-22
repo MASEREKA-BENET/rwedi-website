@@ -40,3 +40,31 @@
   .hero-actions .button{width:100%;min-height:52px;padding:10px 12px}
 }
 @media(max-width:480px){.hero-actions{grid-template-columns:1fr}}
+
+.site-nav a,.menu-toggle,.button,.programme-card,.contact-card,.feature-project,.brand,.enquiry-link,.contact-card a,.contact-details a,.feature-project-copy>a,.footer-nav a,.footer-contact a{transition:color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.button:hover,.button:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(18,53,34,.18)}
+.button:active{transform:translateY(1px) scale(.98);box-shadow:0 2px 6px rgba(18,53,34,.16);filter:brightness(.94)}
+.button-gold:hover,.button-gold:focus-visible{background:#ffd166;border-color:#ffd166;color:#172d1d}
+.button-outline:hover,.button-outline:focus-visible{background:var(--gold);border-color:var(--gold);color:var(--green)}
+.button-green:hover,.button-green:focus-visible{background:var(--green-2);color:#fff}
+.button-light:hover,.button-light:focus-visible{background:var(--green);color:#fff}
+.programme-card:hover,.programme-card:focus-visible{background:#fff5dc;border-color:var(--gold);box-shadow:var(--shadow)}
+.programme-card:hover .programme-icon,.programme-card:focus-visible .programme-icon{color:#bd7e00}
+.programme-card:active{transform:translateY(0) scale(.99);background:#f5e6bf;filter:brightness(.97)}
+.contact-card:hover,.contact-card:focus-within{transform:translateY(-3px);border-color:var(--gold);background:#fffaf0;box-shadow:var(--shadow)}
+.feature-project:hover,.feature-project:focus-within{border-color:var(--gold);box-shadow:var(--shadow)}
+.site-nav a:not(.nav-cta):hover,.site-nav a:not(.nav-cta):focus-visible{color:var(--green-2)}
+.site-nav a:not(.nav-cta):focus-visible:after{width:100%}
+.site-nav a:active{color:#bd7e00;transform:translateY(1px)}
+.site-nav .nav-cta:active{background:#082f1e;transform:translateY(1px) scale(.98)}
+.menu-toggle:hover,.menu-toggle:focus-visible{background:#fff5dc;border-color:var(--gold)}
+.menu-toggle:active{background:var(--gold);transform:scale(.97)}
+.brand:hover .brand-name{color:var(--green-2)}
+.brand:active{transform:translateY(1px)}
+.enquiry-link:hover,.enquiry-link:focus-visible,.feature-project-copy>a:hover,.feature-project-copy>a:focus-visible,.contact-card a:hover,.contact-card a:focus-visible{color:#bd7e00;text-decoration-thickness:2px}
+.contact-details a:hover,.contact-details a:focus-visible{color:#ffd166;text-decoration-thickness:2px}
+.enquiry-link:active,.feature-project-copy>a:active,.contact-card a:active,.contact-details a:active{color:#a46b00}
+.footer-nav a:hover,.footer-nav a:focus-visible{color:var(--gold);text-decoration:underline;text-underline-offset:4px}
+.footer-contact a:hover,.footer-contact a:focus-visible{color:#fff}
+.footer-nav a:active,.footer-contact a:active{color:var(--gold)}
+.social-links a:active{transform:scale(.94);background:var(--gold);color:var(--green)}
