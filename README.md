@@ -14,7 +14,7 @@ Then visit <http://localhost:8000>. All page, stylesheet, script and artwork ref
 
 ## Replace preview assets
 
-- The local `assets/rwedi-logo.svg` is a preview mark, not an approved logo, and the repository does not include an approved logo file. Add the approved artwork at `assets/rwedi-logo.svg`; the header falls back to the organisation name until it is present. If using a different filename or format, update the logo and favicon references in all five HTML files.
+- The supplied organisation logo is `assets/rwedi-logo.png`. It is used in the header and as the favicon on all five pages; preserve its proportions when adjusting its display size.
 - The homepage hero uses the supplied field photo at `assets/kasese-farmers-planting.png`; its location has not been verified, so it is not identified as a Kasese or Kithoma photo. The homepage and projects page use the supplied Kithoma pilot photo at `assets/kithoma-youth-led-climate-smart-farming.jpeg`; confirm its source, project association and usage approval before presenting it as an actual RweDI activity.
 - The homepage programme cards and detailed programme sections use the supplied photos in `assets/programme-agriculture.jpeg`, `assets/programme-youth.jpeg`, `assets/programme-education.jpeg` and `assets/programme-environment.jpeg`, in that order. The youth photo credits Les Stone; confirm the source and usage rights for all four photos before publication.
 - The founder cards use the supplied portraits in `assets/founder-bwambale-john.png`, `assets/founder-enos-kabale.png` and `assets/founder-masereka-benet.png`. Confirm the identities and approval to publish these photos.
