@@ -48,7 +48,7 @@
     const startRotation = () => {
       stopRotation();
       if (isPaused) return;
-      rotationTimer = window.setInterval(() => showSlide(activeSlide + 1), 6500);
+      rotationTimer = window.setInterval(() => showSlide(activeSlide + 1), 4000);
     };
 
     slideControls.forEach((control, index) => {
