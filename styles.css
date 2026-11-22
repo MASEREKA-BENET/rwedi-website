@@ -114,3 +114,7 @@
   .footer-org,.footer-hours,.footer-nav{width:100%;flex:0 1 auto}
   .social-links{margin-left:0}
 }
+@media(max-width:600px){
+  .footer-nav{flex-wrap:nowrap;justify-content:space-between;gap:6px}
+  .footer-nav a{font-size:clamp(11px,3.8vw,14px);white-space:nowrap}
+}
