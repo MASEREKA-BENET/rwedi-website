@@ -12,7 +12,25 @@
   <nav class="site-nav" id="primary-navigation" aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="about.html">About</a><a href="programmes.html">Programmes</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html#get-involved">Get involved</a></nav>
 </header>
 <main id="main">
-  <section class="hero" aria-labelledby="home-title"><div class="hero-copy"><p class="eyebrow">Kasese District, Uganda</p><h1 id="home-title">Supporting farming, skills and education</h1><p>Rwenzori Development Initiative (RweDI) is a registered community development organisation focused on agriculture, youth empowerment, education and environmental resilience.</p><div class="hero-actions"><a class="button button-gold" href="programmes.html">Explore programmes</a><a class="button button-outline" href="contact.html#get-involved">Get involved</a></div></div><div class="hero-art"><img src="assets/kasese-farmers-planting.png" alt="Farmers working together to plant a maize field" fetchpriority="high"></div></section>
+  <section class="hero" aria-labelledby="home-title">
+    <div class="hero-slideshow" aria-hidden="true">
+      <div class="hero-slide hero-slide-farmers is-active"><img src="assets/kasese-farmers-planting.png" alt="" fetchpriority="high" decoding="async"></div>
+      <div class="hero-slide hero-slide-education"><img src="assets/programme-education.jpeg" alt="" loading="lazy" decoding="async"></div>
+      <div class="hero-slide hero-slide-agriculture"><img src="assets/programme-agriculture.jpeg" alt="" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow">Kasese District, Uganda</p>
+      <h1 id="home-title">Supporting farming, skills and education</h1>
+      <p>Rwenzori Development Initiative (RweDI) is a registered community development organisation focused on agriculture, youth empowerment, education and environmental resilience.</p>
+      <div class="hero-actions"><a class="button button-gold" href="programmes.html">Explore programmes</a><a class="button button-outline" href="contact.html#get-involved">Get involved</a></div>
+    </div>
+    <div class="hero-controls" role="group" aria-label="Homepage background photos">
+      <button class="hero-slide-dot is-active" type="button" aria-label="Show farmers planting photo" aria-pressed="true"></button>
+      <button class="hero-slide-dot" type="button" aria-label="Show education photo" aria-pressed="false"></button>
+      <button class="hero-slide-dot" type="button" aria-label="Show agriculture photo" aria-pressed="false"></button>
+      <button class="hero-slide-toggle" type="button" aria-label="Pause background slideshow" aria-pressed="false"><span class="hero-toggle-icon" aria-hidden="true">Ⅱ</span></button>
+    </div>
+  </section>
   <section class="section programmes-section" aria-labelledby="programmes-title"><div class="section-inner"><h2 class="section-heading" id="programmes-title">Our programmes</h2>
     <div class="programme-grid">
       <a class="programme-card" href="programmes.html#agriculture"><img class="programme-image programme-image-agriculture" src="assets/programme-agriculture.jpeg" alt="" aria-hidden="true" loading="lazy"><h3>Agriculture and Food Security</h3></a>
