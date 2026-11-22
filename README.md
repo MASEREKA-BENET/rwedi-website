@@ -19,11 +19,11 @@ Then visit <http://localhost:8000>. All page, stylesheet, script and artwork ref
 - The homepage programme cards and detailed programme sections use the supplied photos in `assets/programme-agriculture.jpeg`, `assets/programme-youth.jpeg`, `assets/programme-education.jpeg` and `assets/programme-environment.jpeg`, in that order. The youth photo credits Les Stone; confirm the source and usage rights for all four photos before publication.
 - The founder cards use the supplied portraits in `assets/founder-bwambale-john.png`, `assets/founder-enos-kabale.png` and `assets/founder-masereka-benet.png`. Confirm the identities and approval to publish these photos.
 
-## Add approved contact details
+## Contact details
 
-The organisation profile supplies main founder Enos Kabale’s phone number, which is linked as telephone and WhatsApp in `contact.html` and the footer. The footer currently shows `hello@rwedi.example` as a clearly marked sample address. Replace it with RweDI’s confirmed public email in all five HTML files before publication:
+The organisation profile supplies main founder Enos Kabale’s phone number, which is linked as telephone and WhatsApp in `contact.html` and the footer. RweDI’s public email address is linked throughout all five HTML pages:
 
-- Email: `<a href="mailto:PUBLIC_EMAIL">PUBLIC_EMAIL</a>`
+- Email: `<a href="mailto:enosmin111@gmail.com">enosmin111@gmail.com</a>`
 - Phone: `<a href="tel:+COUNTRYCODE_NUMBER">DISPLAY_PHONE</a>`
 - WhatsApp: `<a href="https://wa.me/COUNTRYCODE_NUMBER">Message RweDI on WhatsApp</a>` (digits only in the URL, including country code).
 
