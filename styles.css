@@ -68,3 +68,13 @@
 .footer-contact a:hover,.footer-contact a:focus-visible{color:#fff}
 .footer-nav a:active,.footer-contact a:active{color:var(--gold)}
 .social-links a:active{transform:scale(.94);background:var(--gold);color:var(--green)}
+
+.info-panel,.founder-card,.values-list li{transition:transform .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease}
+.info-panel:hover{transform:translateY(-3px);border-color:var(--gold);background:#fffaf0;box-shadow:var(--shadow)}
+.info-panel:hover h3,.founder-card:hover h3{color:var(--green-2)}
+.founder-card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:var(--shadow)}
+.founder-card h3{transition:color .18s ease}
+.founder-card-copy{transition:background-color .18s ease}
+.founder-card:hover .founder-card-copy{background:#fffaf0}
+.values-list li:hover{transform:translateX(3px);border-color:var(--gold);background:#fff5dc;box-shadow:0 4px 12px rgba(18,53,34,.08)}
+.values-list li:hover:before{color:#bd7e00}
