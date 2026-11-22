@@ -14,8 +14,8 @@ Then visit <http://localhost:8000>. All page, stylesheet, script and artwork ref
 
 ## Replace preview assets
 
-- `assets/rwedi-logo.svg` is a locally drawn preview mark based on the provided logo reference; it is **not the original supplied logo file**. Replace it with the approved logo artwork, keeping its aspect ratio. If using a different filename or format, update the logo and favicon references in all five HTML files.
-- The farming and project photos currently load from Unsplash URLs in the HTML and require an internet connection. They are illustrative stock photos, not photographs of Kasese, Kithoma or RweDI activities. Replace them with approved local photos before publication; update alt text and remove the visible stock-photo labels once the correct local images are in place.
+- The local `assets/rwedi-logo.svg` is a preview mark, not an approved logo, and the repository does not include an approved logo file. Add the approved artwork at `assets/rwedi-logo.svg`; the header falls back to the organisation name until it is present. If using a different filename or format, update the logo and favicon references in all five HTML files.
+- The homepage hero uses the supplied field photo at `assets/kasese-farmers-planting.png`; its location has not been verified, so it is not identified as a Kasese or Kithoma photo. The Kithoma feature and other project photos still use Unsplash URLs and require an internet connection. They are illustrative stock photos, not photos of RweDI activities. Replace them with approved local photos before publication; update alt text and remove visible stock-photo labels once the correct local images are in place.
 - The founder cards use sample Unsplash portraits, explicitly labelled as not depicting the named founders. Replace these with approved founder photos using consistent dimensions and descriptive alt text before publication.
 
 ## Add approved contact details

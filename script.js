@@ -9,10 +9,17 @@
 
   const button = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
+  const brand = document.querySelector('.brand');
+  const brandLogo = brand && brand.querySelector('img');
   document.querySelectorAll('.social-links a[title="Email (sample address)"]').forEach(link => {
     link.title = 'Email RweDI';
     link.setAttribute('aria-label', 'Email RweDI');
   });
+  if (brandLogo) {
+    const showTextOnlyBrand = () => brand.classList.add('logo-missing');
+    brandLogo.addEventListener('error', showTextOnlyBrand, { once: true });
+    if (brandLogo.complete && brandLogo.naturalWidth === 0) showTextOnlyBrand();
+  }
   if (!button || !nav) return;
   const closeMenu = () => {
     button.setAttribute('aria-expanded', 'false');
