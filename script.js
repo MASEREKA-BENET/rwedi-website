@@ -22,9 +22,8 @@
   const slideControls = hero ? Array.from(hero.querySelectorAll('.hero-slide-dot')) : [];
   const slideToggle = hero && hero.querySelector('.hero-slide-toggle');
   if (hero && slides.length && slideControls.length === slides.length && slideToggle) {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let activeSlide = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
-    let isPaused = reducedMotion.matches;
+    let isPaused = false;
     let rotationTimer = null;
     const toggleIcon = slideToggle.querySelector('.hero-toggle-icon');
 
@@ -46,44 +45,29 @@
       window.clearInterval(rotationTimer);
       rotationTimer = null;
     };
-    const startRotation = force => {
+    const startRotation = () => {
       stopRotation();
-      if (isPaused || document.hidden || (!force && (hero.matches(':hover') || hero.contains(document.activeElement)))) return;
+      if (isPaused) return;
       rotationTimer = window.setInterval(() => showSlide(activeSlide + 1), 6500);
     };
 
     slideControls.forEach((control, index) => {
       control.addEventListener('click', () => {
         showSlide(index);
-        startRotation(false);
+        startRotation();
       });
     });
     slideToggle.addEventListener('click', () => {
       isPaused = !isPaused;
       updateToggle();
-      startRotation(!isPaused);
-    });
-    hero.addEventListener('mouseenter', stopRotation);
-    hero.addEventListener('mouseleave', () => startRotation(false));
-    hero.addEventListener('focusin', stopRotation);
-    hero.addEventListener('focusout', event => {
-      if (!hero.contains(event.relatedTarget)) startRotation(false);
+      startRotation();
     });
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) stopRotation();
-      else startRotation(false);
+      else startRotation();
     });
-    if (typeof reducedMotion.addEventListener === 'function') {
-      reducedMotion.addEventListener('change', event => {
-        if (event.matches) {
-          isPaused = true;
-          updateToggle();
-          stopRotation();
-        }
-      });
-    }
     updateToggle();
-    startRotation(false);
+    startRotation();
   }
 
   if (!button || !nav) return;
