@@ -89,6 +89,12 @@
 .programme-card h3{max-width:none;padding:14px 12px 18px;font-size:clamp(16px,1.4vw,20px)}
 .programme-card:hover .programme-image,.programme-card:focus-visible .programme-image{transform:scale(1.035)}
 .programme-card:hover h3,.programme-card:focus-visible h3{color:var(--green-2)}
+.programme-detail-image{width:150px;height:112px;flex:0 0 150px;object-fit:cover;border-radius:10px;box-shadow:0 3px 10px rgba(18,53,34,.16)}
+.programme-detail-image-agriculture{object-position:center 40%}
+.programme-detail-image-youth{object-position:right center}
+.programme-detail-image-education{object-position:center 43%}
+.programme-detail-image-environment{object-position:center center}
+@media(max-width:600px){.programme-detail-head{gap:14px}.programme-detail-image{width:104px;height:80px;flex-basis:104px}}
 .footer-contact a{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .footer-contact .contact-icon{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .footer-hours{flex:0 1 260px}
