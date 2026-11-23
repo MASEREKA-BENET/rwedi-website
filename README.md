@@ -27,7 +27,7 @@ The organisation profile supplies main founder Enos Kabale’s phone number, whi
 - Phone: `<a href="tel:+COUNTRYCODE_NUMBER">DISPLAY_PHONE</a>`
 - WhatsApp: `<a href="https://wa.me/COUNTRYCODE_NUMBER">Message RweDI on WhatsApp</a>` (digits only in the URL, including country code).
 
-The phone number is displayed in local Uganda format (`0789 033 226`) and linked internationally as `+256789033226`. The feedback button opens a draft email to the sample `.example` address; replace its destination with the confirmed email before publishing. The LinkedIn footer icon currently opens a LinkedIn company search for RweDI; replace its URL in all five pages with the official organization profile when available. The WhatsApp icon opens a chat to the supplied number. Confirm all public links before publishing. The contact page does not include a form because no submission service is configured.
+The phone number is displayed in local Uganda format (`0789 033 226`) and linked internationally as `+256789033226`. The feedback button opens a draft email to the sample `.example` address; replace its destination with the confirmed email before publishing. Footer icons for Facebook, X, LinkedIn, Instagram and YouTube currently open platform search results for RweDI; replace those URLs in `script.js` with the official organization profiles when available. The WhatsApp icon opens a chat to the supplied number. Confirm all public links before publishing. The contact page does not include a form because no submission service is configured.
 
 ## Content approval
 
