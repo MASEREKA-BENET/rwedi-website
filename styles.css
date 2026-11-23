@@ -18,11 +18,11 @@
 .founder-portrait{height:320px}.founder-card-masereka .founder-portrait img{object-position:center 15%}.founder-card-copy{position:relative;z-index:1;min-height:104px;background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:16px}.founder-card h3{margin:0 0 7px}.footer-contact span,.footer-small{display:none}.feedback-panel{max-width:1120px;margin:24px auto 0;padding:26px;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:12px;background:#fff;box-shadow:var(--shadow)}.feedback-panel h2{font:700 27px/1.2 var(--serif);color:var(--green);margin:0 0 8px}.feedback-panel p{max-width:750px;color:var(--muted);margin:0 0 18px}
 @media(max-width:900px){.founder-portrait{height:320px}.feedback-panel{margin-top:20px;padding:21px}}
 html,body,button,input,select,textarea{font-family:Arial,Helvetica,sans-serif}input,select,textarea,button{font-family:inherit}.site-nav .nav-cta{white-space:nowrap}
-.site-header{gap:clamp(14px,1.6vw,24px)}.brand{flex:0 1 520px;min-width:0}.brand-name{white-space:normal;max-width:clamp(280px,26vw,380px);line-height:1.12}.site-nav{flex:0 0 auto;gap:clamp(12px,1.8vw,24px)}
+.site-header{gap:clamp(14px,1.6vw,24px)}.brand{flex:0 1 520px;min-width:0}.brand-name{white-space:nowrap;max-width:none;line-height:1.12}.site-nav{flex:0 0 auto;gap:clamp(12px,1.8vw,24px)}
 .project-facts span,.page-hero .eyebrow{transition:transform .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease}.project-facts span:hover{transform:translateY(-3px);background:#fff5dc;border-color:var(--gold);box-shadow:var(--shadow)}.page-hero .eyebrow{display:inline-block;padding:5px 12px;border:1px solid transparent;border-radius:999px}.page-hero .eyebrow:hover{transform:translateY(-2px);background:rgba(255,255,255,.1);border-color:rgba(243,196,94,.7)}
-@media(max-width:900px){.site-header{padding-right:100px}.brand{flex:0 1 auto;margin-right:0}.brand-name{max-width:185px}.menu-toggle{display:inline-flex;position:absolute;right:14px;top:50%;flex:0 0 auto;transform:translateY(-50%)}}
-@media(max-width:390px){.brand-name{max-width:150px}}
-@media(min-width:901px) and (max-width:1050px){.brand-name{max-width:320px;font-size:19px}}
+@media(max-width:900px){.site-header{padding-right:100px}.brand{flex:0 1 auto;margin-right:0}.brand-name{white-space:normal;max-width:185px}.menu-toggle{display:inline-flex;position:absolute;right:14px;top:50%;flex:0 0 auto;transform:translateY(-50%)}}
+@media(max-width:390px){.brand-name{white-space:normal;max-width:150px}}
+@media(min-width:901px) and (max-width:1050px){.brand-name{white-space:nowrap;max-width:320px;font-size:19px}}
 .founder-card-masereka .founder-portrait{background:#fff}
 
 .hero{min-height:clamp(410px,50vh,500px)}
