@@ -17,7 +17,7 @@ Then visit <http://localhost:8000>. All page, stylesheet, script and artwork ref
 - The supplied organisation logo is `assets/rwedi-logo.png`. It is used in the header and as the favicon on all five pages; preserve its proportions when adjusting its display size.
 - The homepage hero uses the supplied field photo at `assets/kasese-farmers-planting.png`; its location has not been verified, so it is not identified as a Kasese or Kithoma photo. The homepage and projects page use the supplied Kithoma pilot photo at `assets/kithoma-youth-led-climate-smart-farming.jpeg`; confirm its source, project association and usage approval before presenting it as an actual RweDI activity.
 - The homepage programme cards and detailed programme sections use the supplied photos in `assets/programme-agriculture.jpeg`, `assets/programme-youth.jpeg`, `assets/programme-education.jpeg` and `assets/programme-environment.jpeg`, in that order. The youth photo credits Les Stone; confirm the source and usage rights for all four photos before publication.
-- The founder cards use the supplied portraits in `assets/founder-bwambale-john.png` and `assets/founder-masereka-benet.jpeg`. Enos Kabale’s main founder portrait uses `enos jpeg .jpeg` from the website folder. Confirm the identities and approval to publish these photos.
+- The founder cards use the supplied portrait in `assets/founder-bwambale-john.png` and the original Masereka Benet portrait in `masereka benet photo.jpeg` from the website folder. Enos Kabale’s main founder portrait uses `enos jpeg .jpeg` from the website folder. Confirm the identities and approval to publish these photos.
 
 ## Contact details
 
