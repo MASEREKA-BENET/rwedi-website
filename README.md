@@ -23,7 +23,7 @@ Then visit <http://localhost:8000>. All page, stylesheet, script and artwork ref
 
 The organisation profile supplies main founder Enos Kabale’s phone number, which is linked as telephone and WhatsApp in `contact.html` and the footer. RweDI’s public email address is linked throughout all five HTML pages:
 
-- Email: `<a href="mailto:enosmin111@gmail.com">enosmin111@gmail.com</a>`
+- Email: `<a href="mailto:rwedi.info@gmail.com">rwedi.info@gmail.com</a>`
 - Phone: `<a href="tel:+COUNTRYCODE_NUMBER">DISPLAY_PHONE</a>`
 - WhatsApp: `<a href="https://wa.me/COUNTRYCODE_NUMBER">Message RweDI on WhatsApp</a>` (digits only in the URL, including country code).
 

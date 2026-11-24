@@ -33,7 +33,7 @@
       footerSocialLinks.querySelector('[aria-label="Find RweDI on Instagram"]'),
       footerSocialLinks.querySelector('[aria-label="Find RweDI on YouTube"]'),
       footerSocialLinks.querySelector('[aria-label="Message RweDI on WhatsApp"]'),
-      footerSocialLinks.querySelector('[aria-label="Email RweDI at enosmin111@gmail.com"]'),
+      footerSocialLinks.querySelector('[aria-label="Email RweDI at rwedi.info@gmail.com"]'),
     ];
     if (orderedSocialLinks.every(Boolean)) footerSocialLinks.replaceChildren(...orderedSocialLinks);
     const footerBottom = document.createElement('div');
