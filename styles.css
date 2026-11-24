@@ -23,7 +23,7 @@ html,body,button,input,select,textarea{font-family:Arial,Helvetica,sans-serif}in
 @media(max-width:900px){.site-header{padding-right:100px}.brand{flex:0 1 auto;margin-right:0}.brand-name{white-space:normal;max-width:185px}.menu-toggle{display:inline-flex;position:absolute;right:14px;top:50%;flex:0 0 auto;transform:translateY(-50%)}}
 @media(max-width:390px){.brand-name{white-space:normal;max-width:150px}}
 @media(min-width:901px) and (max-width:1050px){.brand-name{white-space:nowrap;max-width:320px;font-size:19px}}
-.founder-card-masereka .founder-portrait{background:linear-gradient(145deg,#dce8dc,#f4ead8)}.founder-card-masereka .founder-portrait img{object-position:center 18%}
+.founder-card-masereka .founder-portrait{background:#fff}.founder-card-masereka .founder-portrait img{object-position:center 18%}
 .hero .eyebrow .brand-acronym{text-transform:none;letter-spacing:normal}
 
 .hero{min-height:clamp(410px,50vh,500px)}
