@@ -276,3 +276,4 @@ body{background:#fff;color:var(--ink)}
 .page-background-choice:focus-visible{outline:3px solid #fff;outline-offset:3px}
 @media(max-width:600px){.page-background-picker{flex-wrap:nowrap;overflow-x:auto;padding:2px 3px 8px;margin-top:19px;scrollbar-width:thin}.page-background-choice{flex:0 0 auto}.page-hero-photo{object-position:center}}
 @media(prefers-reduced-motion:reduce){.page-hero-photo,.page-background-choice{transition:none!important}}
+.section-heading:after{display:none}
