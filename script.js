@@ -1,124 +1,64 @@
 (() => {
-  const textWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let textNode;
-  while ((textNode = textWalker.nextNode())) {
-    textNode.nodeValue = textNode.nodeValue.replace(/\bproposed headquarters\b/gi, match =>
-      match[0] === 'P' ? 'Headquarters' : 'headquarters'
-    );
-  }
-
-  const button = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
-  const brand = document.querySelector('.brand');
-  const brandLogo = brand && brand.querySelector('img');
-  if (brandLogo) {
-    const showTextOnlyBrand = () => brand.classList.add('logo-missing');
-    brandLogo.addEventListener('error', showTextOnlyBrand, { once: true });
-    if (brandLogo.complete && brandLogo.naturalWidth === 0) showTextOnlyBrand();
+  const menuButton = document.querySelector('.menu-toggle');
+  const current = window.location.pathname.split('/').pop() || 'index.html';
+  const groups = [
+    { title: 'Home', href: 'index.html' },
+    { title: 'About Us', href: 'about.html', items: [['Organisation Overview', 'about.html#overview'], ['Mission and Vision', 'about.html#mission-vision'], ['Our Founders', 'about.html#founders'], ['Governance', 'about.html#governance']] },
+    { title: 'Our Projects', href: 'projects.html', items: [['Current Project', 'projects.html#current-project'], ['Project Details', 'projects.html#project-impact']] },
+    { title: 'Our Programs', href: 'programmes.html', items: [['Agriculture and Food Security', 'programmes.html#agriculture'], ['Youth Empowerment', 'programmes.html#youth'], ['Education and Human Development', 'programmes.html#education'], ['Environment and Resilience', 'programmes.html#environment']] },
+    { title: 'Our Partners', href: 'index.html#partners', items: [['Partnership approach', 'index.html#partners'], ['Become a Partner', 'contact.html#partner']] },
+    { title: 'Contact Us', href: 'contact.html' },
+    { title: 'Support RweDI', href: 'contact.html#get-involved', cta: true }
+  ];
+
+  if (nav) {
+    nav.innerHTML = groups.map((group, index) => {
+      const active = current === group.href.split('#')[0] && !group.cta;
+      const itemLinks = group.items ? `<div class="nav-dropdown" id="nav-dropdown-${index}">${group.items.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}</div>` : '';
+      return `<div class="nav-item${group.items ? ' has-dropdown' : ''}${group.cta ? ' nav-support' : ''}"><a class="nav-link${group.cta ? ' nav-cta' : ''}" href="${group.href}"${active ? ' aria-current="page"' : ''}${group.items ? ` aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown-${index}"` : ''}>${group.title}${group.items ? '<span class="dropdown-chevron" aria-hidden="true">⌄</span>' : ''}</a>${itemLinks}</div>`;
+    }).join('');
   }
 
-  const footer = document.querySelector('.site-footer');
-  const footerSocialLinks = footer && footer.querySelector('.social-links');
-  if (footer && footerSocialLinks && !footer.querySelector('.footer-bottom')) {
-    footerSocialLinks.insertAdjacentHTML('beforeend', `
-      <a href="https://www.facebook.com/search/top?q=Rwenzori%20Development%20Initiative" target="_blank" rel="noopener noreferrer" aria-label="Find RweDI on Facebook" title="Facebook search for RweDI"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.6 21v-8h2.7l.4-3.2h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.6V3.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H7.3V13h2.8v8z"/></svg></a>
-      <a href="https://x.com/search?q=Rwenzori%20Development%20Initiative" target="_blank" rel="noopener noreferrer" aria-label="Find RweDI on X" title="X search for RweDI"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2.5h3.1l-6.8 7.8 8 11.2H17l-5-6.6-5.7 6.6H3.2l7.3-8.4L2.8 2.5H10l4.5 6.1zm-1.1 17h1.7L8.5 4.4H6.7z"/></svg></a>
-      <a href="https://www.instagram.com/explore/search/keyword/?q=Rwenzori%20Development%20Initiative" target="_blank" rel="noopener noreferrer" aria-label="Find RweDI on Instagram" title="Instagram search for RweDI"><svg class="icon-outline" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r=".8" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://www.youtube.com/results?search_query=Rwenzori+Development+Initiative" target="_blank" rel="noopener noreferrer" aria-label="Find RweDI on YouTube" title="YouTube search for RweDI"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.8V8.2l6.5 3.8z"/></svg></a>
-    `);
-    const orderedSocialLinks = [
-      footerSocialLinks.querySelector('[aria-label="Find RweDI on Facebook"]'),
-      footerSocialLinks.querySelector('[aria-label="Find RweDI on X"]'),
-      footerSocialLinks.querySelector('[aria-label="Find RweDI on LinkedIn"]'),
-      footerSocialLinks.querySelector('[aria-label="Find RweDI on Instagram"]'),
-      footerSocialLinks.querySelector('[aria-label="Find RweDI on YouTube"]'),
-      footerSocialLinks.querySelector('[aria-label="Message RweDI on WhatsApp"]'),
-      footerSocialLinks.querySelector('[aria-label="Email RweDI at rwedi.info@gmail.com"]'),
-    ];
-    if (orderedSocialLinks.every(Boolean)) footerSocialLinks.replaceChildren(...orderedSocialLinks);
-    const footerBottom = document.createElement('div');
-    footerBottom.className = 'footer-bottom';
-    const copyright = document.createElement('p');
-    copyright.className = 'footer-copyright';
-    copyright.textContent = `© ${new Date().getFullYear()} RWEDI. ALL RIGHTS RESERVED.`;
-    footerSocialLinks.setAttribute('aria-label', 'Social media and contact links');
-    footerBottom.append(copyright, footerSocialLinks);
-    footer.append(footerBottom);
+  const closeDropdowns = (except) => nav?.querySelectorAll('.has-dropdown > .nav-link').forEach(link => {
+    if (link !== except) { link.setAttribute('aria-expanded', 'false'); link.parentElement.classList.remove('dropdown-open'); }
+  });
+  nav?.querySelectorAll('.has-dropdown > .nav-link').forEach(link => {
+    link.addEventListener('click', event => {
+      if (window.matchMedia('(max-width: 1000px)').matches) {
+        event.preventDefault();
+        const open = link.getAttribute('aria-expanded') === 'true';
+        closeDropdowns(link);
+        link.setAttribute('aria-expanded', String(!open));
+        link.parentElement.classList.toggle('dropdown-open', !open);
+      }
+    });
+    link.addEventListener('keydown', event => {
+      if (event.key === 'ArrowDown') { event.preventDefault(); link.setAttribute('aria-expanded', 'true'); link.parentElement.classList.add('dropdown-open'); link.parentElement.querySelector('.nav-dropdown a')?.focus(); }
+    });
+  });
+
+  if (menuButton && nav) {
+    const closeMenu = () => { menuButton.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); closeDropdowns(); };
+    menuButton.addEventListener('click', () => {
+      const open = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!open)); nav.classList.toggle('is-open', !open);
+    });
+    nav.addEventListener('click', event => { if (event.target.closest('.nav-dropdown a') || !event.target.closest('.has-dropdown')) closeMenu(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') { closeMenu(); menuButton.focus(); } });
+    document.addEventListener('click', event => { if (!nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu(); });
   }
 
-  const hero = document.querySelector('.hero');
-  const slides = hero ? Array.from(hero.querySelectorAll('.hero-slide')) : [];
-  const slideControls = hero ? Array.from(hero.querySelectorAll('.hero-slide-dot')) : [];
-  const slideToggle = hero && hero.querySelector('.hero-slide-toggle');
-  if (hero && slides.length && slideControls.length === slides.length && slideToggle) {
-    let activeSlide = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
-    let isPaused = false;
-    let rotationTimer = null;
-    const toggleIcon = slideToggle.querySelector('.hero-toggle-icon');
-
-    const updateToggle = () => {
-      slideToggle.setAttribute('aria-pressed', String(isPaused));
-      slideToggle.setAttribute('aria-label', isPaused ? 'Play background slideshow' : 'Pause background slideshow');
-      toggleIcon.textContent = isPaused ? '▶' : 'Ⅱ';
-    };
-    const showSlide = index => {
-      activeSlide = (index + slides.length) % slides.length;
-      slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === activeSlide));
-      slideControls.forEach((control, controlIndex) => {
-        const isCurrent = controlIndex === activeSlide;
-        control.classList.toggle('is-active', isCurrent);
-        control.setAttribute('aria-pressed', String(isCurrent));
-      });
-    };
-    const stopRotation = () => {
-      window.clearInterval(rotationTimer);
-      rotationTimer = null;
-    };
-    const startRotation = () => {
-      stopRotation();
-      if (isPaused) return;
-      rotationTimer = window.setInterval(() => showSlide(activeSlide + 1), 4000);
-    };
-
-    slideControls.forEach((control, index) => {
-      control.addEventListener('click', () => {
-        showSlide(index);
-        startRotation();
-      });
-    });
-    slideToggle.addEventListener('click', () => {
-      isPaused = !isPaused;
-      updateToggle();
-      startRotation();
-    });
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) stopRotation();
-      else startRotation();
-    });
-    updateToggle();
-    startRotation();
-  }
-
-  if (!button || !nav) return;
-  const closeMenu = () => {
-    button.setAttribute('aria-expanded', 'false');
-    nav.classList.remove('is-open');
-  };
-  button.addEventListener('click', () => {
-    const expanded = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', String(!expanded));
-    nav.classList.toggle('is-open', !expanded);
-  });
-  nav.addEventListener('click', event => {
-    if (event.target.closest('a')) closeMenu();
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && nav.classList.contains('is-open')) {
-      closeMenu();
-      button.focus();
-    }
-  });
-  document.addEventListener('click', event => {
-    if (!nav.contains(event.target) && !button.contains(event.target)) closeMenu();
+  document.querySelectorAll('[data-current-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
+  const form = document.querySelector('[data-email-form]');
+  if (form) form.addEventListener('submit', event => {
+    event.preventDefault();
+    const status = form.querySelector('[aria-live="polite"]');
+    if (!form.reportValidity()) { if (status) status.textContent = 'Please check the required fields and try again.'; return; }
+    const data = new FormData(form);
+    const subject = encodeURIComponent(`Website enquiry: ${data.get('subject') || 'Contact RweDI'}`);
+    const body = encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`);
+    if (status) status.textContent = 'Your email app will open with your enquiry ready to send.';
+    window.location.href = `mailto:rwedi.info@gmail.com?subject=${subject}&body=${body}`;
   });
 })();
