@@ -73,9 +73,9 @@
   const pageHero = document.querySelector('.page-hero');
   const pageBackgrounds = {
     'about.html': [
-      { label: 'Community', src: 'assets/kasese-farmers-planting.png' },
+      { label: 'Community planting', src: 'assets/programme-environment.jpeg' },
       { label: 'Agriculture', src: 'assets/programme-agriculture.jpeg' },
-      { label: 'Environment', src: 'assets/programme-environment.jpeg' }
+      { label: 'Community farming', src: 'assets/kasese-farmers-planting.png' }
     ],
     'programmes.html': [
       { label: 'Agriculture', src: 'assets/programme-agriculture.jpeg' },
