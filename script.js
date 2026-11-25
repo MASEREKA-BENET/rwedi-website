@@ -152,6 +152,7 @@
   }
 
   document.querySelectorAll('[data-current-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
+  document.querySelectorAll('.footer-location').forEach(node => { node.textContent = 'Proposed headquarters: Kasese Municipality, Kasese District, Uganda'; });
   const form = document.querySelector('[data-email-form]');
   if (form) form.addEventListener('submit', event => {
     event.preventDefault();
