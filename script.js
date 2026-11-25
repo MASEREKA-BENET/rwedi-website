@@ -16,7 +16,7 @@
     nav.innerHTML = groups.map((group, index) => {
       const active = current === group.href.split('#')[0] && !group.cta;
       const itemLinks = group.items ? `<div class="nav-dropdown" id="nav-dropdown-${index}">${group.items.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}</div>` : '';
-      return `<div class="nav-item${group.items ? ' has-dropdown' : ''}${group.cta ? ' nav-support' : ''}"><a class="nav-link${group.cta ? ' nav-cta' : ''}" href="${group.href}"${active ? ' aria-current="page"' : ''}${group.items ? ` aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown-${index}"` : ''}>${group.title}${group.items ? '<span class="dropdown-chevron" aria-hidden="true">⌄</span>' : ''}</a>${itemLinks}</div>`;
+      return `<div class="nav-item${group.items ? ' has-dropdown' : ''}${group.cta ? ' nav-support' : ''}"><a class="nav-link${group.cta ? ' nav-cta' : ''}" href="${group.href}"${active ? ' aria-current="page"' : ''}${group.items ? ` aria-haspopup="true" aria-expanded="false" aria-controls="nav-dropdown-${index}"` : ''}>${group.title}</a>${itemLinks}</div>`;
     }).join('');
   }
 
@@ -47,6 +47,35 @@
     nav.addEventListener('click', event => { if (event.target.closest('.nav-dropdown a') || !event.target.closest('.has-dropdown')) closeMenu(); });
     document.addEventListener('keydown', event => { if (event.key === 'Escape') { closeMenu(); menuButton.focus(); } });
     document.addEventListener('click', event => { if (!nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu(); });
+  }
+
+  const hero = document.querySelector('.hero');
+  const slides = hero ? Array.from(hero.querySelectorAll('.hero-slide')) : [];
+  const slideToggle = hero?.querySelector('.hero-slide-toggle');
+  if (slides.length > 1 && slideToggle) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let active = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
+    let paused = reducedMotion.matches;
+    let timer;
+    const setSlide = index => {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === active));
+    };
+    const updateToggle = () => {
+      slideToggle.setAttribute('aria-pressed', String(paused));
+      slideToggle.setAttribute('aria-label', paused ? 'Play background images' : 'Pause background images');
+      slideToggle.textContent = paused ? 'Play background images' : 'Pause background images';
+    };
+    const stop = () => { window.clearInterval(timer); timer = undefined; };
+    const start = () => {
+      stop();
+      if (!paused && !document.hidden) timer = window.setInterval(() => setSlide(active + 1), 6500);
+    };
+    slideToggle.addEventListener('click', () => { paused = !paused; updateToggle(); start(); });
+    document.addEventListener('visibilitychange', start);
+    reducedMotion.addEventListener?.('change', event => { if (event.matches) { paused = true; updateToggle(); } start(); });
+    updateToggle();
+    start();
   }
 
   document.querySelectorAll('[data-current-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
