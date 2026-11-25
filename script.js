@@ -51,8 +51,7 @@
 
   const hero = document.querySelector('.hero');
   const slides = hero ? Array.from(hero.querySelectorAll('.hero-slide')) : [];
-  const slideToggle = hero?.querySelector('.hero-slide-toggle');
-  if (slides.length > 1 && slideToggle) {
+  if (slides.length > 1) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let active = Math.max(0, slides.findIndex(slide => slide.classList.contains('is-active')));
     let paused = reducedMotion.matches;
@@ -61,20 +60,13 @@
       active = (index + slides.length) % slides.length;
       slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === active));
     };
-    const updateToggle = () => {
-      slideToggle.setAttribute('aria-pressed', String(paused));
-      slideToggle.setAttribute('aria-label', paused ? 'Play background images' : 'Pause background images');
-      slideToggle.textContent = paused ? 'Play background images' : 'Pause background images';
-    };
     const stop = () => { window.clearInterval(timer); timer = undefined; };
     const start = () => {
       stop();
       if (!paused && !document.hidden) timer = window.setInterval(() => setSlide(active + 1), 6500);
     };
-    slideToggle.addEventListener('click', () => { paused = !paused; updateToggle(); start(); });
     document.addEventListener('visibilitychange', start);
-    reducedMotion.addEventListener?.('change', event => { if (event.matches) { paused = true; updateToggle(); } start(); });
-    updateToggle();
+    reducedMotion.addEventListener?.('change', event => { paused = event.matches; start(); });
     start();
   }
 
