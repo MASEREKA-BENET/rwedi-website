@@ -70,6 +70,87 @@
     start();
   }
 
+  const pageHero = document.querySelector('.page-hero');
+  const pageBackgrounds = {
+    'about.html': [
+      { label: 'Community', src: 'assets/kasese-farmers-planting.png' },
+      { label: 'Agriculture', src: 'assets/programme-agriculture.jpeg' },
+      { label: 'Environment', src: 'assets/programme-environment.jpeg' }
+    ],
+    'programmes.html': [
+      { label: 'Agriculture', src: 'assets/programme-agriculture.jpeg' },
+      { label: 'Youth', src: 'assets/programme-youth.jpeg' },
+      { label: 'Education', src: 'assets/programme-education.jpeg' },
+      { label: 'Environment', src: 'assets/programme-environment.jpeg' }
+    ],
+    'projects.html': [
+      { label: 'Proposed pilot', src: 'assets/kithoma-youth-led-climate-smart-farming.jpeg' },
+      { label: 'Agriculture', src: 'assets/programme-agriculture.jpeg' },
+      { label: 'Community', src: 'assets/kasese-farmers-planting.png' }
+    ],
+    'contact.html': [
+      { label: 'Community', src: 'assets/kasese-farmers-planting.png' },
+      { label: 'Youth', src: 'assets/programme-youth.jpeg' },
+      { label: 'Education', src: 'assets/programme-education.jpeg' },
+      { label: 'Environment', src: 'assets/programme-environment.jpeg' }
+    ]
+  };
+  const backgrounds = pageBackgrounds[current];
+  if (pageHero && backgrounds?.length) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'page-hero-background';
+    backdrop.setAttribute('aria-hidden', 'true');
+    const currentPhoto = document.createElement('img');
+    const nextPhoto = document.createElement('img');
+    currentPhoto.className = 'page-hero-photo is-visible';
+    nextPhoto.className = 'page-hero-photo';
+    currentPhoto.alt = '';
+    nextPhoto.alt = '';
+    currentPhoto.fetchPriority = 'high';
+    currentPhoto.src = backgrounds[0].src;
+    backdrop.append(currentPhoto, nextPhoto);
+    pageHero.prepend(backdrop);
+
+    const picker = document.createElement('div');
+    picker.className = 'page-background-picker';
+    picker.setAttribute('role', 'group');
+    picker.setAttribute('aria-label', 'Choose a page background photo');
+    let visiblePhoto = currentPhoto;
+    let activeIndex = 0;
+    backgrounds.forEach((background, index) => {
+      const choice = document.createElement('button');
+      choice.className = 'page-background-choice';
+      choice.type = 'button';
+      choice.setAttribute('aria-label', `Use ${background.label.toLowerCase()} photo as background`);
+      choice.setAttribute('aria-pressed', String(index === activeIndex));
+      const thumbnail = document.createElement('img');
+      thumbnail.src = background.src;
+      thumbnail.alt = '';
+      thumbnail.loading = 'lazy';
+      const label = document.createElement('span');
+      label.textContent = background.label;
+      choice.append(thumbnail, label);
+      choice.addEventListener('click', () => {
+        if (index === activeIndex) return;
+        activeIndex = index;
+        picker.querySelectorAll('.page-background-choice').forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+        const next = visiblePhoto === currentPhoto ? nextPhoto : currentPhoto;
+        next.classList.remove('is-visible');
+        next.onload = () => {
+          requestAnimationFrame(() => {
+            next.classList.add('is-visible');
+            visiblePhoto.classList.remove('is-visible');
+            visiblePhoto = next;
+          });
+        };
+        next.src = background.src;
+        if (next.complete && next.naturalWidth) next.onload();
+      });
+      picker.append(choice);
+    });
+    pageHero.querySelector('.page-hero-inner')?.append(picker);
+  }
+
   document.querySelectorAll('[data-current-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
   const form = document.querySelector('[data-email-form]');
   if (form) form.addEventListener('submit', event => {
