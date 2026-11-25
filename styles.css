@@ -45,7 +45,8 @@
 .button:hover,.button:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(18,53,34,.18)}
 .button:active{transform:translateY(1px) scale(.98);box-shadow:0 2px 6px rgba(18,53,34,.16);filter:brightness(.94)}
 .button-gold:hover,.button-gold:focus-visible{background:#ffd166;border-color:#ffd166;color:#172d1d}
-.button-outline:hover,.button-outline:focus-visible{background:var(--gold);border-color:var(--gold);color:var(--green)}
+.button-outline:hover,.button-outline:focus-visible{background:rgba(255,255,255,.14);border-color:#fff;color:#fff}
+.button-outline:active{background:rgba(5,32,20,.9);border-color:#fff;color:#fff;filter:none}
 .button-green:hover,.button-green:focus-visible{background:var(--green-2);color:#fff}
 .button-light:hover,.button-light:focus-visible{background:var(--green);color:#fff}
 .programme-card:hover,.programme-card:focus-visible{background:#fff5dc;border-color:var(--gold);box-shadow:var(--shadow)}
