@@ -154,14 +154,30 @@
   document.querySelectorAll('[data-current-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
   document.querySelectorAll('.footer-location').forEach(node => { node.textContent = 'Proposed headquarters: Kasese Municipality, Kasese District, Uganda'; });
   const form = document.querySelector('[data-email-form]');
-  if (form) form.addEventListener('submit', event => {
+  if (form) form.addEventListener('submit', async event => {
     event.preventDefault();
     const status = form.querySelector('[aria-live="polite"]');
     if (!form.reportValidity()) { if (status) status.textContent = 'Please check the required fields and try again.'; return; }
+    const submitButton = form.querySelector('[type="submit"]');
     const data = new FormData(form);
-    const subject = encodeURIComponent(`Website enquiry: ${data.get('subject') || 'Contact RweDI'}`);
-    const body = encodeURIComponent(`Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`);
-    if (status) status.textContent = 'Your email app will open with your enquiry ready to send.';
-    window.location.href = `mailto:rwedi.info@gmail.com?subject=${subject}&body=${body}`;
+    data.set('_subject', `Website enquiry: ${data.get('subject') || 'Contact RweDI'}`);
+    data.set('_replyto', data.get('email'));
+    if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Sending…'; }
+    if (status) status.textContent = 'Sending your message to RweDI…';
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/rwedi.info@gmail.com', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== 'true') throw new Error(result.message || 'Message could not be sent.');
+      if (status) status.textContent = 'Thank you. Your message has been sent directly to RweDI.';
+      form.reset();
+    } catch (error) {
+      if (status) status.textContent = 'We could not send your message right now. Please email rwedi.info@gmail.com directly or try again.';
+    } finally {
+      if (submitButton) { submitButton.disabled = false; submitButton.textContent = 'Send message'; }
+    }
   });
 })();
